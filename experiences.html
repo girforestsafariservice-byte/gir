@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experiences | The Gir Travel Company — Culture, Wellness & Wildlife</title>
+  <meta name="description" content="Iconic, modern experiences across Saurashtra & Kutch: Siddi Dhammal, Kathiyawadi dining, sunrise yoga, Somnath & Dwarka, Velavadar blackbuck drives, Little Rann of Kutch safaris — private, ethical, concierge-managed." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ======= Tokens ======= */
+    :root{
+      --maroon:#6E0C2E; --maroon-700:#4C081F; --maroon-900:#2A0512;
+      --gold:#D4AF37; --gold-700:#B48E1A; --ivory:#FAF7F2; --ink:#121212; --muted:#6B7280;
+      --shadow:0 24px 60px rgba(0,0,0,.18); --ring:0 0 0 3px rgba(212,175,55,.25);
+      --nav-h:72px; --max:1200px; --radius:22px;
+    }
+    @media(min-width:1024px){ :root{ --nav-h:92px; } }
+
+    /* ======= Base ======= */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:auto;padding:0 18px}
+    .section{padding:88px 0}
+    .title{font-family:"Cormorant Garamond",serif;color:var(--maroon-900);font-size:clamp(30px,6vw,46px);margin:0 0 10px;text-align:center;text-wrap:balance}
+    .sub{color:var(--muted);text-align:center;margin:0 0 30px}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);width:260px;margin:44px auto}
+
+    /* ======= Buttons ======= */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:999px;border:1px solid transparent;padding:1rem 1.35rem;font-weight:800;line-height:1;cursor:pointer;transition:transform .18s, box-shadow .18s, background .18s;min-height:48px}
+    .btn:focus-visible{outline:none;box-shadow:var(--ring)}
+    .btn--royal{background:linear-gradient(135deg,var(--gold),#ffe7a4);color:#2B1A07;box-shadow:0 14px 34px rgba(212,175,55,.45), inset 0 -3px 0 rgba(0,0,0,.18)}
+    .btn--royal:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(212,175,55,.6), inset 0 -3px 0 rgba(0,0,0,.22)}
+    .btn--ghost{background:#fff;border:1px solid #e5e7eb;color:#111}
+
+    /* ======= Header (original style) ======= */
+    .nav{position:fixed;left:0;right:0;top:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;background:rgba(42,5,18,.55);backdrop-filter:saturate(140%) blur(6px);transition:background .3s, box-shadow .3s}
+    .nav.scrolled{background:rgba(42,5,18,.95);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+    .nav .inner{max-width:var(--max);margin:auto;padding:0 18px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand img{height:36px}
+    @media(min-width:1024px){ .brand img{height:44px} }
+    .right{display:flex;align-items:center;gap:18px;margin-left:auto}
+    .menu{display:none;gap:22px;align-items:center}
+    .menu a{color:#fff;font-weight:600;position:relative;padding:8px 0}
+    .menu a:after{content:"";position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .menu a:hover:after,.menu a[aria-current="page"]:after{transform:scaleX(1)}
+    .actions{display:none}
+    .actions .cta{padding:.65rem 1rem;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;font-weight:800}
+    .hamburger{display:flex;width:44px;height:44px;border:1px solid rgba(255,255,255,.45);border-radius:12px;background:rgba(46,5,16,.85);color:#fff;align-items:center;justify-content:center}
+    .hamburger svg{width:22px;height:22px}
+    @media(min-width:1024px){ .menu{display:flex} .actions{display:block} .hamburger{display:none} }
+
+    /* ======= Mobile Panel ======= */
+    body.nav-open{overflow:hidden}
+    .mobile-panel{position:fixed;inset:0;z-index:9999;background:#6e0c2e!important;transform:translateX(-100%);transition:transform .3s ease;padding:60px 24px;display:flex;flex-direction:column}
+    body.nav-open .mobile-panel{transform:translateX(0)}
+    .mobile-panel .close-menu{position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:10px;width:40px;height:40px;display:grid;place-items:center;font-size:22px;cursor:pointer}
+    .mobile-panel a{display:block;color:#fff;font-size:1.15rem;font-weight:600;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+    .mobile-panel .cta{margin-top:30px;text-align:center;border:0;border-radius:999px;padding:14px;font-weight:800;background:#fff;color:#2A0E12;font-size:1.05rem}
+
+    /* ======= Hero (modern split) ======= */
+    header.hero{position:relative;padding-top:var(--nav-h);background:radial-gradient(1200px 600px at 10% -10%, rgba(212,175,55,.22), transparent 60%), linear-gradient(180deg, rgba(42,5,18,.92), rgba(42,5,18,.82));color:#fff}
+    .hero-wrap{max-width:var(--max);margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center;padding:28px 18px 18px}
+    .hero-copy{padding:10px}
+    .kicker{letter-spacing:.18em;text-transform:uppercase;color:#f3ead3}
+    .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(34px,6.8vw,78px);line-height:1.06;margin:.35rem 0}
+    .hero-lead{font-size:clamp(15px,3.6vw,20px);color:#f7f2e6;opacity:.96;max-width:56ch}
+    .hero-cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .hero-cta .btn{flex:1 1 220px}
+    .hero-media{border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.22)}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+    @media (max-width:900px){ .hero-wrap{grid-template-columns:1fr} .hero-media{order:-1} }
+
+    /* ======= Quick Chips (sticky) ======= */
+    .quicknav{position:sticky;top:calc(var(--nav-h) - 1px);z-index:900;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.85));backdrop-filter:saturate(140%) blur(6px);padding:10px 0 6px}
+    .chips{display:grid;grid-auto-flow:column;grid-auto-columns:max-content;gap:10px;overflow-x:auto;padding:0 18px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .chip{scroll-snap-align:start;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,175,55,.25);border-radius:999px;padding:10px 14px;background:#fff;box-shadow:var(--shadow);white-space:nowrap}
+
+    /* ======= Cards / Carousels ======= */
+    .row{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:14px;overflow-x:auto;padding:0 18px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .row .card{scroll-snap-align:center}
+    @media (min-width:920px){ .row{grid-auto-columns:32%} }
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(212,175,55,.22);display:flex;flex-direction:column}
+    .card .img{background:#ddd center/cover no-repeat;aspect-ratio:16/9}
+    .card .body{padding:16px;display:flex;flex-direction:column;gap:10px}
+    .card h4{margin:0;color:var(--maroon-900);font-size:20px}
+    .card p{margin:0;color:#4b5563}
+    .card .btn{margin-top:auto}
+
+    /* ======= Featured Mosaic (desktop) ======= */
+    .mosaic{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .tile{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(212,175,55,.22);background:#fff;display:flex;flex-direction:column}
+    .tile .ph{aspect-ratio:16/10;background:#ddd center/cover no-repeat}
+    /* FIX: captions + buttons in normal flow (no overlap) */
+    .tile .cap{position:static;padding:14px;background:#faf7f2;color:var(--ink);display:flex;flex-direction:column;gap:10px}
+    .tile .cap h3{margin:0;font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--maroon-900)}
+    .tile .cap p{margin:0;color:#4b5563}
+    .tile .cap .btn{margin-top:6px;align-self:flex-start}
+    .tile.xl{grid-column:span 7}
+    .tile.lg{grid-column:span 5}
+    .tile.md{grid-column:span 6}
+    .tile.sm{grid-column:span 4}
+    @media (max-width:900px){ .mosaic{display:none} }
+
+    .carousel{display:none}
+    @media (max-width:900px){
+      .carousel{display:grid;grid-auto-flow:column;grid-auto-columns:85%;gap:12px;overflow-x:auto;padding:0 18px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+      .carousel .tile{scroll-snap-align:center}
+    }
+
+    /* ======= Invite ======= */
+    .invite{background:linear-gradient(135deg,var(--maroon-900),var(--maroon));color:#fff;border-radius:24px;box-shadow:0 28px 70px rgba(42,5,18,.4);border:1px solid rgba(212,175,55,.22);overflow:hidden}
+    .invite .head{padding:24px 20px;border-bottom:1px solid rgba(212,175,55,.22);display:flex;gap:16px;align-items:center;background:radial-gradient(900px 420px at 10% -10%, rgba(212,175,55,.2), transparent 60%);flex-wrap:wrap}
+    .crest{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--gold),#ffe3a1);color:#2b1a07}
+    .invite h3{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5.6vw,40px);margin:0}
+    .invite .subt{opacity:.96;margin-top:4px}
+    .invite .foot{padding:16px 20px}
+    .invite .btn{width:100%}
+    @media(min-width:720px){ .invite .foot{display:flex;justify-content:flex-end}.invite .btn{width:auto} }
+
+    /* ======= Footer ======= */
+    footer{background:var(--maroon-900);color:#e8e8e8;padding:40px 0;margin-top:24px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    footer h4{margin:0 0 10px;color:#D4AF37}
+    .copyright{border-top:1px solid #4b1230;margin-top:18px;padding-top:12px;text-align:center;color:#cfcfcf}
+
+    /* ======= Mobile tweaks ======= */
+    @media (max-width:900px){ .section{padding:72px 0} }
+    @media (max-width:640px){ .wrap{padding:0 14px} .section{padding:56px 0} .title{font-size:clamp(28px,8vw,34px)} .btn{min-height:52px} }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="inner">
+      <a class="brand" href="/" aria-label="The Gir Travel Company home">
+        <img src="/assets/logo-white.svg" alt="The Gir Travel Company logo" width="144" height="36" />
+      </a>
+      <div class="right">
+        <div class="menu" role="menubar" aria-label="Main menu">
+         <a role="menuitem" href="index.html">Home</a>
+          <a role="menuitem" href="safaris.html">Safaris</a>
+          <a role="menuitem" href="journeys.html">Journeys</a>
+          <a role="menuitem" href="experiences.html"aria-current="page">Experiences</a>
+          <a role="menuitem" href="gallery.html">Gallery</a>
+          <a role="menuitem" href="about.html" >About</a>
+          <a role="menuitem" href="policies.html">Policies</a>
+          <a role="menuitem" href="contact.html">Contact</a>
+        </div>
+        <div class="actions">
+          <a class="cta" href="enquiry.html">Plan My Journey</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobPanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FULL-SCREEN MOBILE MENU -->
+  <div class="mobile-panel" id="mobPanel" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu" title="Close">×</button>
+    <a href="index.html">Home</a>
+    <a href="safaris.html">Safaris</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="experiences.html"aria-current="page">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html" >About</a>
+    <a href="policies.html">Policies</a>
+    <a href="contact.html">Contact</a>
+    <a class="cta" href ="enquiry.html">Plan My Journey</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" aria-label="Experiences hero">
+    <div class="hero-wrap">
+      <div class="hero-copy">
+        <p class="kicker">Culture • Wellness • Heritage • Wildlife</p>
+        <h1 class="hero-title">Iconic Experiences of Saurashtra & Kutch</h1>
+        <p class="hero-lead">Royal evenings, sacred coasts, artisan deserts, and forest dawns — private, ethical, and concierge‑managed.</p>
+        <div class="hero-cta">
+          <a class="btn btn--royal" href="#featured">Browse Experiences</a>
+          <a class="btn btn--ghost" href="/enquiry">Build My Journey</a>
+        </div>
+      </div>
+      <figure class="hero-media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=2000&q=80" alt="Somnath temple under a golden sky" loading="eager" fetchpriority="high" decoding="async" />
+      </figure>
+    </div>
+  </header>
+
+  <!-- ===== QUICK NAV ===== -->
+  <div class="quicknav" aria-label="Quick navigation">
+    <div class="chips">
+      <a class="chip" href="#featured">✨ Featured</a>
+      <a class="chip" href="#culture">🎵 Culture</a>
+      <a class="chip" href="#cuisine">🍲 Cuisine</a>
+      <a class="chip" href="#wellness">🧘 Wellness</a>
+      <a class="chip" href="#sacred">🛕 Sacred</a>
+      <a class="chip" href="#wildlife">🦌 Wildlife</a>
+      <a class="chip" href="#gallery">🖼 Gallery</a>
+    </div>
+  </div>
+
+  <!-- ===== FEATURED & ICONIC (FIXED BUTTONS) ===== -->
+  <section class="section" id="featured" aria-labelledby="featured-title" style="background:#fff">
+    <div class="wrap">
+      <h2 class="title" id="featured-title">Featured & Iconic</h2>
+      <p class="sub">Moments that define Gujarat — paired elegantly with any journey.</p>
+
+      <!-- Desktop mosaic -->
+      <div class="mosaic" aria-hidden="true">
+        <article class="tile xl">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Private Jeep Safari — Gir</h3>
+            <p>Flexible routes & limited vehicles for a quieter experience.</p>
+            <a class="btn btn--royal" href="/safaris">Explore Safaris</a>
+          </div>
+        </article>
+        <article class="tile lg">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Somnath & Dwarka — Sacred Coast</h3>
+            <p>Sunset aarti and sea‑washed promenades along the Arabian coast.</p>
+            <a class="btn btn--royal" href="#sacred">Add to Journey</a>
+          </div>
+        </article>
+        <article class="tile md">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Kathiyawadi Dining & Workshop</h3>
+            <p>Hands‑on with local chefs: rotla, undhiyu, lasaniya bataka.</p>
+            <a class="btn btn--royal" href="#cuisine">Add to Journey</a>
+          </div>
+        </article>
+        <article class="tile sm">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1600195077079-bc82fcfa79a3?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Velavadar Blackbuck Drive</h3>
+            <p>Golden grasslands, blackbuck herds & harrier roosts.</p>
+            <a class="btn btn--royal" href="#wildlife">Add to Journey</a>
+          </div>
+        </article>
+        <article class="tile sm">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1542131593-3914e7f52a5d?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Sunrise Yoga — Forest Edge</h3>
+            <p>Instructor‑led session with herbal tea & cooling towels.</p>
+            <a class="btn btn--royal" href="#wellness">Add to Journey</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Mobile featured carousel -->
+      <div class="carousel" aria-label="Featured carousel">
+        <article class="tile">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Private Jeep Safari — Gir</h3>
+            <p>Flexible routes & limited vehicles for a quieter experience.</p>
+            <a class="btn btn--royal" href="/safaris">Explore Safaris</a>
+          </div>
+        </article>
+        <article class="tile">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Somnath & Dwarka — Sacred Coast</h3>
+            <p>Sunset aarti and sea‑washed promenades along the Arabian coast.</p>
+            <a class="btn btn--royal" href="#sacred">Add to Journey</a>
+          </div>
+        </article>
+        <article class="tile">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=2000&q=80')"></div>
+          <div class="cap">
+            <h3>Kathiyawadi Dining & Workshop</h3>
+            <p>Hands‑on with local chefs: rotla, undhiyu, lasaniya bataka.</p>
+            <a class="btn btn--royal" href="#cuisine">Add to Journey</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== CULTURE & CUISINE ===== -->
+  <section class="section" id="culture" aria-labelledby="culture-title">
+    <div class="wrap">
+      <h2 class="title" id="culture-title">Culture & Cuisine</h2>
+      <p class="sub">Evenings of rhythm, kitchens of spice — hosted with respect.</p>
+      <div class="row" aria-label="Culture carousel">
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1579548830828-57bcfd233e55?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Siddi Dhammal Performance</h4>
+            <p>Private percussion & dance, fair compensation, meaningful context.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+        <article class="card" id="cuisine">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Kathiyawadi Dining & Workshop</h4>
+            <p>Hands-on with local chefs: rotla, undhiyu, lasaniya bataka.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Junagadh Bazaar & Heritage Walk</h4>
+            <p>Spice lanes and silverwork; Uparkot & Mahabat Maqbara stories.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== WELLNESS ===== -->
+  <section class="section" id="wellness" aria-labelledby="wellness-title" style="background:#fff">
+    <div class="wrap">
+      <h2 class="title" id="wellness-title">Wellness & Nature</h2>
+      <p class="sub">Slow mornings, gentle movement, forest light.</p>
+      <div class="row" aria-label="Wellness carousel">
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1548022961-c462fb164c84?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Sunrise Yoga — Forest Edge</h4>
+            <p>Private instructor-led session; mats, herbal tea, cooling towels.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1542131593-3914e7f52a5d?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Golden Hour Forest Trail (Buffer Zone)</h4>
+            <p>Naturalist-guided trail; birding, botany, ethical wildlife briefings.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== SACRED ===== -->
+  <section class="section" id="sacred" aria-labelledby="sacred-title">
+    <div class="wrap">
+      <h2 class="title" id="sacred-title">Sacred Coast & Heritage</h2>
+      <p class="sub">Pilgrimage towns and ancient fortresses with expert context.</p>
+      <div class="row" aria-label="Sacred carousel">
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Somnath Temple & Coastal Drive</h4>
+            <p>Sunset aarti by the Arabian Sea; lighthouse vistas en route.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1604644401908-113f2a7ed1e6?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Diu Fort & Churches</h4>
+            <p>Portuguese-era fortifications, nautical history, sea-washed promenades.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Girnar Ropeway & Junagadh Heritage</h4>
+            <p>Ropeway ascent; Uparkot Fort and Mahabat Maqbara story-walk.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== WILDLIFE ===== -->
+  <section class="section" id="wildlife" aria-labelledby="wildlife-title" style="background:#fff">
+    <div class="wrap">
+      <h2 class="title" id="wildlife-title">Wildlife Extensions</h2>
+      <p class="sub">Add grasslands and desert to your coastal & forest journey.</p>
+      <div class="row" aria-label="Wildlife carousel">
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1600195077079-bc82fcfa79a3?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Velavadar Blackbuck Drive</h4>
+            <p>Golden grasslands, blackbuck herds, and harrier roosts at dusk.</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1589737683577-8b7965a7ab48?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="body">
+            <h4>Little Rann of Kutch Safari</h4>
+            <p>Wild ass sanctuary and salt desert ecology; artisan villages (optional).</p>
+            <a class="btn btn--royal" href="/enquiry">Add to My Journey →</a>
+          </div>
+        </article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="section" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <h2 class="title" id="gallery-title">Gallery</h2>
+      <p class="sub">A glimpse into evenings, kitchens, sanctuaries, and coastlines.</p>
+      <div class="grid">
+        <article class="card"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h4>Asiatic Lion</h4><p>Portrait from Gir’s protected ranges.</p></div></article>
+        <article class="card"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h4>Kathiyawadi Thali</h4><p>Regional plates crafted by local chefs.</p></div></article>
+        <article class="card"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h4>Somnath</h4><p>Golden hour at the sacred coast.</p></div></article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== INVITATION ===== -->
+  <section class="section" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="invite">
+        <div class="head">
+          <div class="crest" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 7 5 5 4-8 4 8 5-5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+          <div>
+            <h3 id="cta-title">Your Royal Invitation</h3>
+            <div class="subt">Tell us your dates & preferences. We’ll design a modern, tailor‑made experience across Saurashtra & Kutch.</div>
+          </div>
+        </div>
+        <div class="foot">
+          <a class="btn btn--royal" href="/enquiry">Accept Invitation</a>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer aria-labelledby="about-title">
+    <div class="wrap footer-grid">
+      <div>
+        <h4 id="about-title">The Gir Travel Company</h4>
+        <address>
+          Near Sinh Sadan, Gir National Park,<br/> Sasan Gir, Junagadh, Gujarat 362135
+        </address>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p>
+          <a href="/safaris">Safaris</a> • <a href="/journeys">Journeys</a> •
+          <a href="/experiences" aria-current="page">Experiences</a> • <a href="/gallery">Gallery</a>
+        </p>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <p><a href="/policies">Booking & Cancellation • Child • Ethics</a></p>
+      </div>
+      <div id="contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:info@thegir.in">info@thegir.in</a><br/>Phone: <a href="tel:+917624092647">+91 76240 92647</a></p>
+      </div>
+    </div>
+    <div class="wrap copyright">© <span id="year"></span> The Gir Travel Company. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Sticky header
+    const nav=document.getElementById('nav');
+    const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>10);
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // Mobile menu: open/close + ESC + close on link
+    const body=document.body;
+    const burger=document.getElementById('hamburger');
+    const panel=document.getElementById('mobPanel');
+    const closeBtn=document.getElementById('closeMenu');
+
+    function openMenu(){
+      body.classList.add('nav-open');
+      burger.setAttribute('aria-expanded','true');
+      panel.setAttribute('aria-hidden','false');
+    }
+    function closeMenu(){
+      body.classList.remove('nav-open');
+      burger.setAttribute('aria-expanded','false');
+      panel.setAttribute('aria-hidden','true');
+    }
+    function onKeydown(e){ if(e.key==='Escape'){ closeMenu(); } }
+
+    burger.addEventListener('click',openMenu);
+    if(closeBtn) closeBtn.addEventListener('click',closeMenu);
+    panel.querySelectorAll('a').forEach(a=> a.addEventListener('click',closeMenu));
+    document.addEventListener('keydown',onKeydown);
+
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

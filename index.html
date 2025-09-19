@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Gir Travel Company — Royal Safaris & Journeys</title>
+  <meta name="description" content="Asia's finest luxury safaris in Gir, Gujarat — private permits, concierge logistics, cultural evenings, and tailor-made itineraries for international travellers." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --maroon:#6E0C2E; --maroon-700:#4C081F; --maroon-900:#2A0512;
+      --gold:#D4AF37; --gold-700:#B48E1A; --ivory:#FAF7F2; --ink:#1A1A1A; --muted:#6B7280;
+      --shadow:0 24px 60px rgba(0,0,0,.18);
+      --ring:0 0 0 3px rgba(212,175,55,.25);
+      --nav-h:72px;
+    }
+    @media (min-width:1024px){ :root{ --nav-h:92px; } }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--ivory);color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    img,video{max-width:100%;display:block}
+
+    .wrap{max-width:1200px;margin:auto;padding:0 18px}
+    .section{padding:88px 0}
+    .title{font-family:"Cormorant Garamond",serif;color:var(--maroon-900);font-size:46px;margin:0 0 10px;text-align:center}
+    .sub{color:var(--muted);text-align:center;margin:0 0 30px}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);width:260px;margin:44px auto}
+    .btn{background:var(--gold);color:#2B1A07;padding:1rem 1.35rem;border:none;border-radius:999px;font-weight:800;box-shadow:0 18px 36px rgba(212,175,55,.35),inset 0 -3px 0 rgba(0,0,0,.15);cursor:pointer}
+    .btn:hover{background:var(--gold-700)}
+    .btn.alt{background:#fff;color:#111;border:1px solid #e5e7eb;box-shadow:none}
+
+    /* ===== HEADER (logo left, nav+CTA right) ===== */
+    .nav{
+      position:fixed;left:0;right:0;top:0;z-index:1000;height:var(--nav-h);
+      display:flex;align-items:center;
+      background:rgba(42,5,18,.55);
+      backdrop-filter:saturate(140%) blur(4px);
+      transition:background .3s, box-shadow .3s;
+    }
+    .nav.scrolled{background:rgba(42,5,18,.92);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+    .nav .inner{
+      max-width:1200px;margin:auto;padding:0 18px;
+      width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .brand{flex:0 0 auto;display:flex;align-items:center}
+    .brand img{height:34px}
+    @media(min-width:1024px){ .brand img{height:42px} }
+
+    .right{display:flex;align-items:center;gap:18px;margin-left:auto}
+    .menu{display:none;gap:22px;align-items:center;justify-content:flex-end}
+    .menu a{color:#fff;font-weight:600;position:relative;letter-spacing:.01em;padding:8px 0}
+    .menu a:after{content:"";position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .menu a:hover:after,.menu a[aria-current="page"]:after{transform:scaleX(1)}
+    .actions{display:none}
+    .actions .cta{
+      padding:.65rem 1rem;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.5);
+      color:#fff;font-weight:800;white-space:nowrap
+    }
+    .hamburger{
+      display:flex;width:44px;height:44px;border:1px solid rgba(255,255,255,.45);
+      border-radius:12px;background:rgba(46,5,16,.85);color:#fff;align-items:center;justify-content:center
+    }
+    .hamburger svg{width:22px;height:22px}
+    @media(min-width:1024px){
+      .menu{display:flex}
+      .actions{display:block}
+      .hamburger{display:none}
+    }
+
+    /* ===== FULL-SCREEN MOBILE MENU (solid) ===== */
+    body.nav-open{overflow:hidden;}
+    .mobile-panel{
+      position:fixed;inset:0;z-index:9999;
+      background:#6e0c2e !important; /* solid, no transparency */
+      transform:translateX(-100%);transition:transform .3s ease;
+      padding:60px 24px;display:flex;flex-direction:column
+    }
+    body.nav-open .mobile-panel{transform:translateX(0)}
+    .mobile-panel a{display:block;color:#fff;font-size:1.2rem;font-weight:600;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+    .mobile-panel .cta{margin-top:30px;text-align:center;border:0;border-radius:999px;padding:14px;font-weight:800;background:#fff;color:#2A0E12;font-size:1.1rem}
+    .close-menu{position:absolute;top:16px;right:16px;background:none;border:none;color:#fff;font-size:2rem;line-height:1;cursor:pointer}
+
+    /* ===== HERO ===== */
+    header.hero{
+      position:relative;min-height:96vh;display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden;
+      padding-top:var(--nav-h);
+    }
+    .hero-media{position:absolute;inset:0}
+    .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.06)}
+    .hero-scrim{position:absolute;inset:0;background:
+      radial-gradient(1200px 600px at 50% 10%, rgba(110,12,46,.25), rgba(42,5,18,.92)),
+      linear-gradient(180deg, rgba(110,12,46,.55), rgba(42,5,18,.94))}
+    .hero-inner{position:relative;z-index:2;padding:0 18px;max-width:1000px}
+    .kicker{letter-spacing:.18em;text-transform:uppercase;color:#f3ead3}
+    .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6.5vw,84px);line-height:1.04;margin:.4rem 0}
+    .hero-lead{font-size:clamp(16px,2.2vw,20px);color:#f7f2e6;opacity:.96}
+    .hero-cta{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+    /* ===== TRUST / ASSURANCE ===== */
+    .assure{position:relative;z-index:3}
+    .assure-band{
+      display:grid;gap:12px;
+      background:#fff;border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,.1);
+      padding:14px;border:1px solid rgba(212,175,55,.25);
+      margin-top:0;grid-template-columns:1fr;
+    }
+    @media(min-width:380px){ .assure-band{grid-template-columns:repeat(2,1fr);} }
+    @media(min-width:1024px){
+      .assure-band{grid-template-columns:repeat(4,1fr);gap:0;padding:0;border-radius:22px;margin-top:-64px}
+    }
+    .tile{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:12px;min-height:68px}
+    @media(min-width:1024px){
+      .tile{border:0;border-right:1px solid rgba(212,175,55,.35);border-radius:0;justify-content:center;padding:18px;min-height:auto}
+      .tile:last-child{border-right:0}
+    }
+    .crest{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#ffe9a6,var(--gold));color:#2b1a07;font-weight:900;flex:0 0 auto}
+    .meta{display:flex;flex-direction:column;min-width:0;flex:1}
+    .value{font-weight:900;color:var(--maroon-900);line-height:1}
+    .value span{display:inline-block;font-size:clamp(1.05rem,4.5vw,1.6rem)}
+    .note{font-size:.9rem;color:#6b7280;margin-top:2px;line-height:1.2}
+    .assure-foot{text-align:center;color:#6b7280;margin:12px 0 0;font-size:.96rem}
+
+    /* ===== Highlights ===== */
+    .high{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .chip{background:#fff;border:1px solid rgba(212,175,55,.25);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+    .chip .ico{width:38px;height:38px;border-radius:10px;background:linear-gradient(145deg,var(--gold),#ffe3a1);display:grid;place-items:center;color:#2b2412;font-weight:900}
+    .chip b{color:var(--maroon-900)}
+
+    /* ===== Card grid ===== */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(212,175,55,.22);transform:translateY(22px);opacity:0;transition:transform .7s ease,opacity .7s ease}
+    .card.reveal{transform:translateY(0);opacity:1}
+    .card .img{height:220px;background:#ddd center/cover no-repeat}
+    .card .body{padding:18px}
+    .card h3{margin:0 0 8px;color:var(--maroon-900)}
+    .card p{margin:0;color:#4b5563}
+    .card a.more{display:inline-block;margin-top:10px;font-weight:700;color:var(--maroon)}
+
+    /* ===== Experiences ===== */
+    .xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .xp-item{background:#fff;border-radius:16px;padding:16px;border:1px solid rgba(212,175,55,.22);box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+    .xp .ico{width:46px;height:46px;border-radius:10px;background:linear-gradient(145deg,var(--maroon),var(--maroon-700));color:#fff;display:grid;place-items:center;font-weight:900}
+
+    /* ===== Gallery with Lightbox ===== */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .gallery a{display:block;border-radius:16px;overflow:hidden;border:1px solid rgba(212,175,55,.2)}
+    .gallery .ph{padding-top:66%;background:#ddd center/cover no-repeat}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:1200}
+    .lightbox.open{display:flex}
+    .lb-img{max-width:92vw;max-height:82vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+    .lb-close,.lb-prev,.lb-next{
+      position:absolute;top:18px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+      color:#fff;border-radius:999px;padding:10px 12px;cursor:pointer;backdrop-filter:blur(4px)
+    }
+    .lb-close{right:18px}
+    .lb-prev,.lb-next{top:50%;transform:translateY(-50%);padding:12px 14px}
+    .lb-prev{left:18px}
+    .lb-next{right:18px}
+
+    /* ===== Royal Promise ===== */
+    .promise{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .promise .p{background:#fff;border:1px solid rgba(212,175,55,.22);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .promise h4{margin:0 0 6px;color:var(--maroon-900)}
+    .promise p{margin:0;color:#4b5563}
+
+    /* ===== Royal Invitation (polished & mobile-first) ===== */
+    .invite{background:linear-gradient(135deg,var(--maroon-900),var(--maroon));color:#fff;border-radius:24px;box-shadow:0 28px 70px rgba(42,5,18,.4);border:1px solid rgba(212,175,55,.22);overflow:hidden}
+    .invite .head{padding:28px 24px;border-bottom:1px solid rgba(212,175,55,.22);display:flex;gap:16px;align-items:center;background:radial-gradient(900px 420px at 10% -10%, rgba(212,175,55,.2), transparent 60%)}
+    .crest{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--gold),#ffe3a1);color:#2b1a07}
+    .invite h3{font-family:'Cormorant Garamond',serif;font-size:40px;margin:0}
+    .invite .subt{opacity:.96;margin-top:4px}
+    .invite .body{padding:20px}
+    .inv-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    .inv-card{background:#fff;color:#111;border-radius:18px;border:1px solid #e7e2d7;box-shadow:var(--shadow);overflow:hidden}
+    .inv-card .pad{padding:18px}
+    .form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:18px}
+    .form .full{grid-column:1/-1}
+    .field{position:relative}
+    .field input,.field select,.field textarea{width:100%;font:inherit;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 14px 14px 14px;transition:border .2s, box-shadow .2s}
+    .field textarea{min-height:120px;resize:vertical}
+    .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#d4af37;box-shadow:var(--ring)}
+    .label{position:absolute;left:14px;top:12px;color:#6b7280;background:#fff;padding:0 6px;transition:transform .15s ease, color .15s ease, top .15s ease}
+    .field input:focus + .label,
+    .field input:not(:placeholder-shown) + .label,
+    .field select:focus + .label,
+    .field textarea:focus + .label,
+    .field textarea:not(:placeholder-shown) + .label{transform:translateY(-12px) scale(.92);top:-2px;color:#7a5b12}
+    .error{font-size:.85rem;color:#991b1b;margin-top:6px;display:none}
+    .invalid input,.invalid select,.invalid textarea{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.12)}
+    .pref-row{display:flex;flex-wrap:wrap;gap:10px}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:999px;padding:10px 12px;background:#fff;cursor:pointer}
+    .pill input{accent-color:#d4af37}
+    .actions-form{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+    .btn-primary{background:var(--gold);color:#2B1A1A;padding:1rem 1.35rem;border:none;border-radius:999px;font-weight:800;box-shadow:0 18px 36px rgba(212,175,55,.35),inset 0 -3px 0 rgba(0,0,0,.15);cursor:pointer}
+    .btn-primary:hover{background:var(--gold-700)}
+    .btn-ghost{border:1px solid #e5e7eb;background:#fff;color:#111;font-weight:700;border-radius:999px;padding:1rem 1.25rem}
+    .steps{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+    .step{display:flex;align-items:center;gap:8px;color:#374151}
+    .badge{width:24px;height:24px;border-radius:999px;display:grid;place-items:center;background:#f2f0ea;border:1px solid #e5decf;font-weight:700;color:#7a5b12}
+    .plans{display:grid;grid-auto-flow:column;grid-auto-columns:max-content;gap:10px;margin:6px 0 12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+    .plan{border:1px solid #e5e7eb;border-radius:14px;padding:12px 14px;cursor:pointer;background:#fafafa;display:flex;align-items:center;gap:10px;scroll-snap-align:start;min-width:150px}
+    .plan input{accent-color:#d4af37}
+    .benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:6px}
+    .benefit{display:flex;gap:10px;align-items:flex-start}
+    .ico{width:18px;height:18px;color:var(--maroon)}
+    .summary{margin-top:12px;display:flex;gap:8px;overflow:auto;padding-bottom:6px}
+    .summary .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;font-weight:600;color:#374151;white-space:nowrap}
+    @media (max-width:900px){.inv-grid{grid-template-columns:1fr}.form-card{order:1}.info-card{order:2}}
+    @media (max-width:640px){
+      .invite h3{font-size:34px}
+      .invite .body{padding:12px}
+      .form{grid-template-columns:1fr;gap:12px;padding:14px}
+      .actions-form{flex-direction:column;align-items:stretch}
+      .actions-form .btn-primary,.actions-form .btn-ghost{width:100%}
+    }
+    @media (max-width:380px){ .summary{display:none} }
+
+    /* ===== Footer ===== */
+    footer{background:var(--maroon-900);color:#e8e8e8;padding:40px 0;margin-top:24px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    footer h4{margin:0 0 10px;color:#D4AF37}
+    .copyright{border-top:1px solid #4b1230;margin-top:18px;padding-top:12px;text-align:center;color:#cfcfcf}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="inner">
+      <!-- Brand on the far left -->
+      <a class="brand" href="/" aria-label="The Gir Travel Company home">
+        <img src="/assets/logo-white.svg" alt="The Gir Travel Company logo" width="144" height="36" />
+      </a>
+
+      <!-- Right cluster: site pages + CTA + hamburger -->
+      <div class="right">
+        <div class="menu" role="menubar" aria-label="Main menu">
+          <a role="menuitem" href="index.html"aria-current="page">Home</a>
+          <a role="menuitem" href="safaris.html">Safaris</a>
+          <a role="menuitem" href="journeys.html">Journeys</a>
+          <a role="menuitem" href="experiences.html">Experiences</a>
+          <a role="menuitem" href="gallery.html">Gallery</a>
+          <a role="menuitem" href="about.html" >About</a>
+          <a role="menuitem" href="policies.html">Policies</a>
+          <a role="menuitem" href="contact.html">Contact</a>
+        </div>
+        <div class="actions">
+          <a class="cta" href="enquiry.html">Plan My Journey</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobPanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FULL-SCREEN MOBILE MENU (outside nav; solid) -->
+  <div class="mobile-panel" id="mobPanel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="safaris.html">Safaris</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html" >About</a>
+    <a href="policies.html">Policies</a>
+    <a href="contact.html"aria-current="page">Contact</a>
+    <a class="cta" href ="enquiry.html">Plan My Journey</a>
+  </div>
+
+  <!-- HERO (homepage content still present) -->
+  <header class="hero" id="home" aria-label="Hero">
+    <div class="hero-media" aria-hidden="true">
+      
+      <img src="aaaa.png" alt="Golden light over Gir forest" loading="eager" />
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-inner">
+      <p class="kicker">Premiere • Private • Tailor-Made</p>
+      <h1 class="hero-title">Travel Gujarat, <span style="color:var(--gold)">as Kings Once Did</span></h1>
+      <p class="hero-lead">Private safaris in Gir, royal cultural evenings, and concierge-crafted journeys designed for international travellers.</p>
+      <div class="hero-cta">
+        <a class="btn" href="/enquiry" aria-label="Open Royal Invitation form">Accept Your Invitation</a>
+        <a class="btn alt" href="/journeys">Explore Inspirations</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUST -->
+  <section class="assure" aria-label="Royal Assurance">
+    <div class="wrap">
+      <div class="assure-band" id="assureBand">
+        <article class="tile" aria-label="Guest satisfaction 4.9 out of 5">
+          <div class="crest" aria-hidden="true">★</div>
+          <div class="meta">
+            <div class="value"><span data-count="4.9" data-suffix="/5">0</span></div>
+            <div class="note">Independent post-trip surveys</div>
+          </div>
+        </article>
+        <article class="tile" aria-label="Over one thousand travellers hosted">
+          <div class="crest" aria-hidden="true">👥</div>
+          <div class="meta">
+            <div class="value"><span data-count="1000" data-plus="+">0</span></div>
+            <div class="note">From 22+ countries</div>
+          </div>
+        </article>
+        <article class="tile" aria-label="Permits managed 100 percent">
+          <div class="crest" aria-hidden="true">🎟</div>
+          <div class="meta">
+            <div class="value"><span data-count="100" data-suffix="%">0</span></div>
+            <div class="note">End-to-end compliance</div>
+          </div>
+        </article>
+        <article class="tile" aria-label="24 by 7 concierge support">
+          <div class="crest" aria-hidden="true">📞</div>
+          <div class="meta">
+            <div class="value"><span>24×7</span></div>
+            <div class="note">Multilingual on-trip team</div>
+          </div>
+        </article>
+      </div>
+      <p class="assure-foot">✔ Licensed & GST-compliant • Ethical wildlife practices • Secure payments</p>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" id="highlights" aria-label="Highlights">
+    <div class="wrap high">
+      <div class="chip"><div class="ico" aria-hidden="true">🎟</div><div><b>Permits Included</b><br><span class="muted">We arrange everything</span></div></div>
+      <div class="chip"><div class="ico" aria-hidden="true">🐾</div><div><b>Expert Naturalists</b><br><span class="muted">Private jeep safaris</span></div></div>
+      <div class="chip"><div class="ico" aria-hidden="true">🍽</div><div><b>All Meals</b><br><span class="muted">Veg / Non-veg / Jain</span></div></div>
+      <div class="chip"><div class="ico" aria-hidden="true">🛡</div><div><b>Safe & Ethical</b><br><span class="muted">International standards</span></div></div>
+    </div>
+  </section>
+
+  <!-- SAFARIS -->
+  <section class="section" id="safaris" aria-labelledby="safaris-title">
+    <div class="wrap">
+      <h2 class="title" id="safaris-title">A Throne in the Wilderness</h2>
+      <p class="sub">Dawn & dusk drives in Gir with seasoned trackers and photographers.</p>
+      <div class="grid reveal">
+        <article class="card"><div class="img" role="img" aria-label="Private Jeep Safari" style="background-image:url('https://images.unsplash.com/photo-1595981267035-df03e3a74b83?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h3>Private Jeep Safari</h3><p>Flexible routes & timings; limited vehicles for a quieter experience.</p><a class="more" href="/enquiry">Plan this safari →</a></div></article>
+        <article class="card"><div class="img" role="img" aria-label="Birding Focus" style="background-image:url('https://images.unsplash.com/photo-1542219550-341c68572bdb?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h3>Birding Focus</h3><p>Wetlands & forest edges targeting raptors and rarities.</p><a class="more" href="/enquiry">Plan this safari →</a></div></article>
+        <article class="card"><div class="img" role="img" aria-label="Photography Setups" style="background-image:url('https://images.unsplash.com/photo-1600633855256-5d4220cf4e64?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h3>Photography Setups</h3><p>Guided frames, respectful distances, no flash — built for photographers.</p><a class="more" href="/enquiry">Plan this safari →</a></div></article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- JOURNEYS -->
+  <section class="section" id="journeys" aria-labelledby="journeys-title">
+    <div class="wrap">
+      <h2 class="title" id="journeys-title">Signature Journeys</h2>
+      <p class="sub">Inspiration itineraries — every journey is tailor-made.</p>
+      <div class="grid reveal">
+        <article class="card"><div class="img" role="img" aria-label="3N/4D Diu Gir Junagadh" style="background-image:url('https://images.unsplash.com/photo-1604644401908-113f2a7ed1e6?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h3>3 Nights / 4 Days</h3><p>Coast • Lions • Heritage — Diu, Gir, Uparkot & Girnar Ropeway.</p><a class="more" href="/journeys">View details →</a></div></article>
+        <article class="card"><div class="img" role="img" aria-label="5N/6D with Velavadar" style="background-image:url('https://images.unsplash.com/photo-1545153996-0f2e0981ef76?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h3>5 Nights / 6 Days</h3><p>Sea • Lions • Grasslands — Diu, multi-safari, Junagadh bazaars, Velavadar.</p><a class="more" href="/journeys">View details →</a></div></article>
+        <article class="card"><div class="img" role="img" aria-label="7N/8D Western Royal Circuit" style="background-image:url('https://images.unsplash.com/photo-1589737683577-8b7965a7ab48?auto=format&fit=crop&w=1400&q=80')"></div><div class="body"><h3>7 Nights / 8 Days</h3><p>Western Royal Circuit — heritage cruise, safaris & conservation talk.</p><a class="more" href="/journeys">View details →</a></div></article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section class="section" id="experiences" aria-labelledby="experiences-title">
+    <div class="wrap">
+      <h2 class="title" id="experiences-title">Royal Experiences</h2>
+      <p class="sub">Culture & wellness add-ons to elevate your stay.</p>
+      <div class="xp">
+        <div class="xp-item"><div class="ico" aria-hidden="true">🎵</div><div>Siddi Dhammal performance</div></div>
+        <div class="xp-item"><div class="ico" aria-hidden="true">🍲</div><div>Kathiyawadi dining & workshop</div></div>
+        <div class="xp-item"><div class="ico" aria-hidden="true">🧘</div><div>Sunrise yoga & wellness</div></div>
+        <div class="xp-item"><div class="ico" aria-hidden="true">🛕</div><div>Somnath & Dwarka day trips</div></div>
+        <div class="xp-item"><div class="ico" aria-hidden="true">🦌</div><div>Velavadar blackbuck drives</div></div>
+        <div class="xp-item"><div class="ico" aria-hidden="true">☀️</div><div>Little Rann of Kutch safari</div></div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <h2 class="title" id="gallery-title">Gallery</h2>
+      <p class="sub">Lions, landscapes, and living culture — a glimpse of what awaits.</p>
+      <div class="gallery" id="galleryGrid">
+        <a href="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=2000&q=90" data-index="0"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1400&q=80')" aria-label="Asiatic lion portrait"></div></a>
+        <a href="https://images.unsplash.com/photo-1542131593-3914e7f52a5d?auto=format&fit=crop&w=2000&q=90" data-index="1"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1542131593-3914e7f52a5d?auto=format&fit=crop&w=1400&q=80')" aria-label="Gir forest road"></div></a>
+        <a href="https://images.unsplash.com/photo-1600195077079-bc82fcfa79a3?auto=format&fit=crop&w=2000&q=90" data-index="2"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1600195077079-bc82fcfa79a3?auto=format&fit=crop&w=1400&q=80')" aria-label="Blackbuck in grassland"></div></a>
+        <a href="https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=2000&q=90" data-index="3"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1583337130417-3346a1a58f11?auto=format&fit=crop&w=1400&q=80')" aria-label="Somnath temple"></div></a>
+        <a href="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=2000&q=90" data-index="4"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1400&q=80')" aria-label="Diu coastline"></div></a>
+        <a href="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=2000&q=90" data-index="5"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=1400&q=80')" aria-label="Gujarati thali"></div></a>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+
+    <!-- Lightbox modal -->
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+      <img class="lb-img" id="lbImg" alt="Gallery image" />
+      <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+      <button class="lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+      <button class="lb-next" id="lbNext" aria-label="Next">›</button>
+    </div>
+  </section>
+
+  <!-- PROMISE -->
+  <section class="section" id="promise" style="background:#fff" aria-labelledby="promise-title">
+    <div class="wrap">
+      <h2 class="title" id="promise-title">Our Royal Promise</h2>
+      <p class="sub">Service worthy of a crown — and peace of mind at every step.</p>
+      <div class="promise">
+        <div class="p"><h4>Tailor-Made</h4><p>Every journey is custom-designed around your pace, interests, and comfort.</p></div>
+        <div class="p"><h4>End-to-End</h4><p>Permits, transfers, hotels, meals — handled by a single concierge team.</p></div>
+        <div class="p"><h4>Safety & Ethics</h4><p>International-grade operations with strict wildlife ethics and child policies.</p></div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY / ROYAL INVITATION (kept on homepage for conversions) -->
+  <section class="section" id="enquiry" aria-labelledby="enquiry-title">
+    <div class="wrap">
+      <div class="invite">
+        <div class="head">
+          <div class="crest" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 7 5 5 4-8 4 8 5-5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 id="enquiry-title">Your Royal Invitation</h3>
+            <div class="subt">Tell us your dates & preferences. We’ll reply with a tailor-made plan.</div>
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="inv-grid">
+            <!-- Form -->
+            <div class="inv-card form-card">
+              <form class="form" id="invForm" novalidate>
+                <div class="field full">
+                  <input id="name" name="name" required placeholder=" " autocomplete="name"/>
+                  <span class="label">Full name *</span>
+                  <div class="error" id="err-name">Please enter your name.</div>
+                </div>
+                <div class="field">
+                  <input id="email" type="email" name="email" required placeholder=" " autocomplete="email"/>
+                  <span class="label">Email *</span>
+                  <div class="error" id="err-email">Please enter a valid email.</div>
+                </div>
+                <div class="field">
+                  <input id="phone" name="phone" required placeholder=" " inputmode="tel" pattern="^[+0-9()\\-\\s]{7,}$"/>
+                  <span class="label">Phone (with country code) *</span>
+                  <div class="error" id="err-phone">Please include your country code.</div>
+                </div>
+                <div class="field">
+                  <input id="country" name="country" placeholder=" " autocomplete="country-name"/>
+                  <span class="label">Country</span>
+                </div>
+                <div class="field">
+                  <input id="dates" name="dates" placeholder=" " />
+                  <span class="label">Preferred dates</span>
+                </div>
+                <div class="field">
+                  <input id="party" name="party" type="number" min="1" placeholder=" " />
+                  <span class="label">Travellers</span>
+                </div>
+                <div class="field full">
+                  <select id="lengthSelect">
+                    <option value="3N/4D" selected>3 Nights / 4 Days</option>
+                    <option value="5N/6D">5 Nights / 6 Days</option>
+                    <option value="7N/8D">7 Nights / 8 Days</option>
+                    <option value="Custom">Custom</option>
+                  </select>
+                  <span class="label">Trip length</span>
+                </div>
+
+                <div class="full pref-row" aria-label="Trip style">
+                  <label class="pill"><input type="checkbox" name="style" value="Wildlife"> Wildlife</label>
+                  <label class="pill"><input type="checkbox" name="style" value="Photography"> Photography</label>
+                  <label class="pill"><input type="checkbox" name="style" value="Heritage"> Heritage</label>
+                  <label class="pill"><input type="checkbox" name="style" value="Wellness"> Wellness</label>
+                </div>
+
+                <div class="field full">
+                  <textarea id="notes" name="notes" placeholder=" "></textarea>
+                  <span class="label">Notes & add-ons (Siddi Dhammal, Yoga, Somnath/Dwarka, Velavadar, LRK, Kutch, SOU)</span>
+                </div>
+
+                <div class="full" style="display:flex;gap:12px;align-items:center;margin-top:2px">
+                  <input type="checkbox" id="consent" required />
+                  <label for="consent">I consent to The Gir Travel Company contacting me about this request.</label>
+                </div>
+
+                <div class="actions-form">
+                  <button class="btn-primary" type="submit">Accept Your Invitation</button>
+                  <a class="btn-ghost" href="mailto:info@thegir.in">Email instead</a>
+                </div>
+
+                <!-- Honeypot -->
+                <input type="text" name="website" autocomplete="off" style="display:none" aria-hidden="true" tabindex="-1">
+
+                <div class="right-foot full">
+                  <div class="summary" id="summary">
+                    <span class="chip" id="sum-plan">Plan: 3N / 4D</span>
+                    <span class="chip" id="sum-dates">Dates: —</span>
+                    <span class="chip" id="sum-party">Travellers: —</span>
+                    <span class="chip" id="sum-style">Style: —</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Info -->
+            <aside class="inv-card info-card">
+              <div class="pad">
+                <div class="steps" aria-label="Quick overview">
+                  <div class="step"><span class="badge">A</span> Select length</div>
+                  <div class="step"><span class="badge">B</span> Review inclusions</div>
+                </div>
+                <div class="plans" id="plans" role="radiogroup" aria-label="Select trip length">
+                  <label class="plan"><input type="radio" name="plan" value="3N/4D" checked> 3N / 4D</label>
+                  <label class="plan"><input type="radio" name="plan" value="5N/6D"> 5N / 6D</label>
+                  <label class="plan"><input type="radio" name="plan" value="7N/8D"> 7N / 8D</label>
+                  <label class="plan"><input type="radio" name="plan" value="Custom"> Custom</label>
+                </div>
+                <div class="benefits" aria-label="Key benefits">
+                  <div class="benefit">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <div><b>Licensed & compliant</b><br>International-grade safety & ethics.</div>
+                  </div>
+                  <div class="benefit">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v4a2 2 0 0 0 0 2v4H3v-4a2 2 0 0 0 0-2zM13 7v10"/></svg>
+                    <div><b>Permits managed</b><br>Safari entries, transfers, hotels — arranged.</div>
+                  </div>
+                  <div class="benefit">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3v7a2 2 0 0 0 2 2h0V3M8 3v9M12 3v9M16 3c0 3 1 5 3 5v9M16 8h3"/></svg>
+                    <div><b>All meals</b><br>Veg / Non-veg / Jain options.</div>
+                  </div>
+                  <div class="benefit">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13v3a4 4 0 0 0 4 4h1v-6H8a4 4 0 0 1-4-4V9a8 8 0 0 1 16 0v1a4 4 0 0 1-4 4h-1v6h1a4 4 0 0 0 4-4v-3"/></svg>
+                    <div><b>24×7 concierge</b><br>Multilingual support throughout your trip.</div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="about" aria-labelledby="about-title">
+    <div class="wrap footer-grid">
+      <div>
+        <h4 id="about-title">The Gir Travel Company</h4>
+        <address>
+          Near Sinh Sadan, Gir National Park,<br> Sasan Gir, Junagadh, Gujarat 362135
+        </address>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p>
+          <a href="/safaris">Safaris</a> • <a href="/journeys">Journeys</a> •
+          <a href="/experiences">Experiences</a> • <a href="/gallery">Gallery</a>
+        </p>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <p><a href="/policies">Booking & Cancellation • Child • Ethics</a></p>
+      </div>
+      <div id="contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:info@thegir.in">info@thegir.in</a><br>Phone: <a href="tel:+917624092647">+91 76240 92647</a></p>
+      </div>
+    </div>
+    <div class="wrap copyright">© <span id="year"></span> The Gir Travel Company. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Sticky header
+    const nav=document.getElementById('nav');
+    const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>10);
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // Mobile menu (no overlay; solid full-screen)
+    const body=document.body;
+    const burger=document.getElementById('hamburger');
+    const panel=document.getElementById('mobPanel');
+    const closeBtn=document.getElementById('closeMenu');
+    burger.addEventListener('click',()=> body.classList.add('nav-open'));
+    closeBtn.addEventListener('click',()=> body.classList.remove('nav-open'));
+    panel.querySelectorAll('a').forEach(a=> a.addEventListener('click',()=> body.classList.remove('nav-open')));
+
+    // Reveal cards on scroll
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.card').forEach(c=>c.classList.add('reveal'));
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(g=>io.observe(g));
+
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Trust counters
+    (function(){
+      const band=document.getElementById('assureBand'); if(!band) return;
+      const spans=band.querySelectorAll('[data-count]'); let done=false;
+      const animate=(el,target,suffix='',plus='')=>{
+        const isFloat=String(target).includes('.'); const end=parseFloat(target);
+        const duration=1100; const start=performance.now();
+        function tick(now){
+          const p=Math.min((now-start)/duration,1);
+          const val=isFloat ? (end*p).toFixed(1) : Math.round(end*p);
+          el.textContent=val+(suffix||'')+(p===1&&plus?plus:'');
+          if(p<1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      };
+      const obs=new IntersectionObserver(es=>{
+        es.forEach(e=>{
+          if(e.isIntersecting && !done){
+            done=true;
+            spans.forEach(s=>animate(s,s.getAttribute('data-count'),s.getAttribute('data-suffix')||'',s.getAttribute('data-plus')||''));
+            obs.disconnect();
+          }
+        });
+      },{threshold:.3});
+      obs.observe(band);
+    })();
+
+    // Gallery Lightbox
+    (function(){
+      const grid=document.getElementById('galleryGrid');
+      const lb=document.getElementById('lightbox');
+      const img=document.getElementById('lbImg');
+      const close=document.getElementById('lbClose');
+      const prev=document.getElementById('lbPrev');
+      const next=document.getElementById('lbNext');
+
+      const links=[...grid.querySelectorAll('a')];
+      let idx=0;
+
+      function open(i){
+        idx=i; img.src=links[idx].href; lb.classList.add('open'); document.body.style.overflow='hidden';
+      }
+      function move(delta){
+        idx=(idx+delta+links.length)%links.length;
+        img.src=links[idx].href;
+      }
+      function closeLb(){ lb.classList.remove('open'); img.src=''; document.body.style.overflow=''; }
+
+      links.forEach(a=>{
+        a.addEventListener('click',(e)=>{ e.preventDefault(); open(parseInt(a.dataset.index,10)); });
+      });
+      close.addEventListener('click',closeLb);
+      lb.addEventListener('click',(e)=>{ if(e.target===lb) closeLb(); });
+      prev.addEventListener('click',()=>move(-1));
+      next.addEventListener('click',()=>move(1));
+      document.addEventListener('keydown',(e)=>{
+        if(!lb.classList.contains('open')) return;
+        if(e.key==='Escape') closeLb();
+        if(e.key==='ArrowLeft') move(-1);
+        if(e.key==='ArrowRight') move(1);
+      });
+    })();
+
+    // Royal Invitation: sync plan radio <-> select and summary
+    const planRadios=document.querySelectorAll('input[name="plan"]');
+    const lengthSelect=document.getElementById('lengthSelect');
+    function updatePlanChip(v){ const el=document.getElementById('sum-plan'); if(el) el.textContent='Plan: '+v; }
+    planRadios.forEach(r=>r.addEventListener('change',()=>{
+      const checked=document.querySelector('input[name="plan"]:checked');
+      if(lengthSelect && checked) lengthSelect.value=checked.value;
+      updatePlanChip(checked?checked.value:'');
+    }));
+    if(lengthSelect) lengthSelect.addEventListener('change',()=>{
+      const val=lengthSelect.value;
+      const radio=[...planRadios].find(r=>r.value===val); if(radio) radio.checked=true;
+      updatePlanChip(val);
+    });
+
+    const dates=document.getElementById('dates');
+    const party=document.getElementById('party');
+    const styleBoxes=document.querySelectorAll('input[name="style"]');
+    const sumDates=document.getElementById('sum-dates');
+    const sumParty=document.getElementById('sum-party');
+    const sumStyle=document.getElementById('sum-style');
+    if(dates) dates.addEventListener('input',()=>{ if(sumDates) sumDates.textContent='Dates: '+(dates.value||'—'); });
+    if(party) party.addEventListener('input',()=>{ if(sumParty) sumParty.textContent='Travellers: '+(party.value||'—'); });
+    styleBoxes.forEach(cb=>cb.addEventListener('change',()=>{
+      const vals=[...styleBoxes].filter(x=>x.checked).map(x=>x.value);
+      if(sumStyle) sumStyle.textContent='Style: '+(vals.join(', ')||'—');
+    }));
+
+    // Form validation
+    const form=document.getElementById('invForm');
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      let ok=true;
+      function markInvalid(id,cond){
+        const field=document.getElementById(id).closest('.field');
+        const err=document.getElementById('err-'+id);
+        if(cond){field.classList.remove('invalid'); if(err) err.style.display='none';}
+        else {field.classList.add('invalid'); if(err) err.style.display='block'; ok=false;}
+      }
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const phone=document.getElementById('phone').value.trim();
+      const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const phoneOk=/^[+0-9()\-\s]{7,}$/.test(phone);
+      markInvalid('name',name.length>1);
+      markInvalid('email',emailOk);
+      markInvalid('phone',phoneOk);
+      const consent=document.getElementById('consent').checked;
+      if(!consent){ alert('Please provide consent to be contacted.'); ok=false; }
+      if(ok){
+        alert('Thank you! We will contact you within 24 hours.');
+        form.reset();
+        updatePlanChip(lengthSelect?lengthSelect.value:'3N/4D');
+        if(sumDates) sumDates.textContent='Dates: —';
+        if(sumParty) sumParty.textContent='Travellers: —';
+        if(sumStyle) sumStyle.textContent='Style: —';
+      }
+    });
+  </script>
+</body>
+</html>

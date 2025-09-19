@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Safaris | The Gir Travel Company — Royal Safaris & Journeys</title>
+  <meta name="description" content="Private, ethical jeep safaris in Gir National Park with expert naturalists, concierge permits, and tailor‑made itineraries for international travellers." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========= Design Tokens ========= */
+    :root{
+      --maroon:#6E0C2E; --maroon-700:#4C081F; --maroon-900:#2A0512;
+      --gold:#D4AF37; --gold-700:#B48E1A; --ivory:#FAF7F2; --ink:#1A1A1A; --muted:#6B7280;
+      --ring:0 0 0 3px rgba(212,175,55,.25);
+      --shadow:0 24px 60px rgba(0,0,0,.18);
+      --nav-h:72px; --safe-top:env(safe-area-inset-top,0px);
+    }
+    @media (min-width:1024px){ :root{ --nav-h:92px; } }
+
+    /* ========= Base ========= */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--ivory);color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .wrap{max-width:1200px;margin:auto;padding:0 18px}
+    .section{padding:88px 0}
+    .title{font-family:"Cormorant Garamond",serif;color:var(--maroon-900);font-size:46px;margin:0 0 10px;text-align:center;text-wrap:balance}
+    .sub{color:var(--muted);text-align:center;margin:0 0 30px}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);width:260px;margin:44px auto}
+
+    /* ========= Buttons ========= */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;cursor:pointer;user-select:none;
+         border-radius:999px;border:1px solid transparent;padding:1rem 1.35rem;font-weight:800;line-height:1}
+    .btn--ghost{background:#fff;border-color:#e5e7eb;color:#111}
+    .btn--ghost:hover{background:#f8fafc}
+    /* Royal: make it unmistakable and resilient to overrides */
+    .btn--royal{background:linear-gradient(135deg,var(--gold),#ffe9a6) !important;color:#2B1A07 !important;border:none !important;
+                box-shadow:0 12px 28px rgba(212,175,55,.48), inset 0 -3px 0 rgba(0,0,0,.18);}
+    .btn--royal:hover{filter:saturate(1.05);transform:translateY(-1.5px);box-shadow:0 16px 38px rgba(212,175,55,.6), inset 0 -3px 0 rgba(0,0,0,.22)}
+    .btn--royal:active{transform:translateY(0)}
+
+    /* ========= Header (exactly like homepage) ========= */
+    .nav{position:fixed;left:0;right:0;top:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;background:rgba(42,5,18,.55);backdrop-filter:saturate(140%) blur(4px);transition:background .3s, box-shadow .3s}
+    .nav.scrolled{background:rgba(42,5,18,.92);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+    .nav .inner{max-width:1200px;margin:auto;padding:0 18px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{flex:0 0 auto;display:flex;align-items:center}
+    .brand img{height:34px}
+    @media(min-width:1024px){ .brand img{height:42px} }
+    .right{display:flex;align-items:center;gap:18px;margin-left:auto}
+    .menu{display:none;gap:22px;align-items:center;justify-content:flex-end}
+    .menu a{color:#fff;font-weight:600;position:relative;letter-spacing:.01em;padding:8px 0}
+    .menu a:after{content:"";position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .menu a:hover:after,.menu a[aria-current="page"]:after{transform:scaleX(1)}
+    .actions{display:none}
+    .actions .cta{padding:.65rem 1rem;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;font-weight:800;white-space:nowrap}
+    .hamburger{display:flex;width:44px;height:44px;border:1px solid rgba(255,255,255,.45);border-radius:12px;background:rgba(46,5,16,.85);color:#fff;align-items:center;justify-content:center}
+    .hamburger svg{width:22px;height:22px}
+    @media(min-width:1024px){ .menu{display:flex} .actions{display:block} .hamburger{display:none} }
+
+    /* Mobile menu */
+    body.nav-open{overflow:hidden}
+    .mobile-panel{position:fixed;inset:0;z-index:9999;background:#6e0c2e !important;transform:translateX(-100%);transition:transform .3s ease;padding:60px 24px;display:flex;flex-direction:column}
+    body.nav-open .mobile-panel{transform:translateX(0)}
+    .mobile-panel a{display:block;color:#fff;font-size:1.2rem;font-weight:600;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+    .mobile-panel .cta{margin-top:30px;text-align:center;border:0;border-radius:999px;padding:14px;font-weight:800;background:#fff;color:#2A0E12;font-size:1.1rem}
+    .close-menu{position:absolute;top:16px;right:16px;background:none;border:none;color:#fff;font-size:2rem;line-height:1;cursor:pointer}
+
+    /* ========= Hero ========= */
+    header.hero{position:relative;min-height:clamp(440px,64vh,700px);display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden;padding-top:calc(var(--nav-h) + var(--safe-top))}
+    .hero-media{position:absolute;inset:0}
+    .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(.95) contrast(1.06)}
+    .hero-scrim{position:absolute;inset:0;background:radial-gradient(1200px 600px at 50% 10%, rgba(110,12,46,.25), rgba(42,5,18,.92)),linear-gradient(180deg, rgba(110,12,46,.55), rgba(42,5,18,.94))}
+    .hero-inner{position:relative;z-index:2;padding:0 18px;max-width:980px}
+    .kicker{letter-spacing:.18em;text-transform:uppercase;color:#f3ead3}
+    .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,7.2vw,68px);line-height:1.06;margin:.4rem 0}
+    .hero-lead{font-size:clamp(15px,3.6vw,20px);color:#f7f2e6;opacity:.96}
+    .hero-cta{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .hero-cta .btn{flex:1 1 240px}
+    @media (max-width:480px){ .hero-cta .btn{flex:1 1 100%} }
+
+    /* ========= Highlights ========= */
+    .high{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .chip{background:#fff;border:1px solid rgba(212,175,55,.25);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+    .chip .ico{width:38px;height:38px;border-radius:10px;background:linear-gradient(145deg,var(--gold),#ffe3a1);display:grid;place-items:center;color:#2b2412;font-weight:900}
+
+    /* ========= Safari Options (Cards) ========= */
+    #packages .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    #packages .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(212,175,55,.22);display:flex;flex-direction:column}
+    #packages .card .img{background:#ddd center/cover no-repeat;aspect-ratio:16/9;flex:0 0 auto}
+    #packages .card .body{padding:18px;display:flex;flex-direction:column;gap:10px;word-break:break-word}
+    #packages .card h3{margin:0;color:var(--maroon-900)}
+    #packages .card p{margin:0;color:#4b5563}
+    #packages .card .cta{margin-top:auto}
+    @media (max-width:640px){
+      #packages .grid{grid-template-columns:1fr}
+      #packages .card .img{aspect-ratio:16/10}
+      #packages .card .cta{width:100%}
+    }
+
+    /* ========= Planning columns ========= */
+    .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .p{background:#fff;border:1px solid rgba(212,175,55,.22);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:999px;padding:10px 12px;background:#fff;margin:6px 6px 0 0}
+
+    /* ========= FAQ ========= */
+    .faq{max-width:900px;margin:0 auto}
+    .q{background:#fff;border:1px solid rgba(212,175,55,.22);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);margin:10px 0}
+    .q h4{margin:0;color:var(--maroon-900)}
+    .q p{margin:6px 0 0;color:#4b5563}
+
+    /* ========= Invitation ========= */
+    .invite{background:linear-gradient(135deg,var(--maroon-900),var(--maroon));color:#fff;border-radius:24px;box-shadow:0 28px 70px rgba(42,5,18,.4);border:1px solid rgba(212,175,55,.22);overflow:hidden}
+    .invite .head{padding:24px 20px;border-bottom:1px solid rgba(212,175,55,.22);display:flex;gap:16px;align-items:center;background:radial-gradient(900px 420px at 10% -10%, rgba(212,175,55,.2), transparent 60%);flex-wrap:wrap}
+    .crest{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--gold),#ffe3a1);color:#2b1a07}
+    .invite h3{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5.6vw,40px);margin:0}
+    .invite .subt{opacity:.96;margin-top:4px}
+    .invite .foot{padding:16px 20px}
+    .invite .btn{width:100%}
+    @media(min-width:720px){ .invite .foot{display:flex;justify-content:flex-end}.invite .btn{width:auto} }
+
+    /* ========= Footer ========= */
+    footer{background:var(--maroon-900);color:#e8e8e8;padding:40px 0;margin-top:24px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    footer h4{margin:0 0 10px;color:#D4AF37}
+    .copyright{border-top:1px solid #4b1230;margin-top:18px;padding-top:12px;text-align:center;color:#cfcfcf}
+
+    /* ========= Mobile refinements ========= */
+    @media (max-width:900px){ .section{padding:72px 0} header.hero{min-height:58vh} .hero-inner{max-width:92vw} }
+    @media (max-width:640px){
+      .wrap{padding:0 14px}
+      .section{padding:56px 0}
+      .title{font-size:clamp(28px,8vw,34px)}
+      .hero-title{font-size:clamp(24px,7.5vw,34px)}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="inner">
+      <a class="brand" href="/" aria-label="The Gir Travel Company home">
+        <img src="/assets/logo-white.svg" alt="The Gir Travel Company logo" width="144" height="36" />
+      </a>
+      <div class="right">
+        <div class="menu" role="menubar" aria-label="Main menu">
+          <a role="menuitem" href="index.html">Home</a>
+          <a role="menuitem" href="safaris.html"aria-current="page">Safaris</a>
+          <a role="menuitem" href="journeys.html">Journeys</a>
+          <a role="menuitem" href="experiences.html">Experiences</a>
+          <a role="menuitem" href="gallery.html">Gallery</a>
+          <a role="menuitem" href="about.html">About</a>
+          <a role="menuitem" href="policies.html">Policies</a>
+          <a role="menuitem" href="contact.html">Contact</a>
+        </div>
+        <div class="actions">
+          <a class="cta" href="enquiry.html">Plan My Journey</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobPanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-panel" id="mobPanel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu">&times;</button>
+   <a href="index.html">Home</a>
+    <a href="safaris.html"aria-current="page">Safaris</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html" >About</a>
+    <a href="policies.html">Policies</a>
+    <a href="contact.html">Contact</a>
+    <a class="cta" href ="enquiry.html">Plan My Journey</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" aria-label="Safaris hero">
+    <div class="hero-media" aria-hidden="true">
+      <img src="aaaa.png" alt="Gir forest at dawn" />
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-inner">
+      <p class="kicker">Private • Ethical • Expert‑led</p>
+      <h1 class="hero-title">Gir National Park <span style="color:var(--gold)">Private Safaris</span></h1>
+      <p class="hero-lead">Dawn & dusk drives with seasoned trackers and naturalists. Limited entries, maximum respect, unforgettable sightings.</p>
+      <div class="hero-cta">
+        <a class="btn btn--royal" href="#packages">See Safari Options</a>
+        <a class="btn btn--ghost" href="/enquiry">Plan My Journey</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section class="section" aria-label="Highlights">
+    <div class="wrap high">
+      <div class="chip"><div class="ico" aria-hidden="true">🎟</div><div><b>Permits Included</b><br><span class="muted">We arrange everything</span></div></div>
+      <div class="chip"><div class="ico" aria-hidden="true">🐾</div><div><b>Expert Naturalists</b><br><span class="muted">Private jeep safaris</span></div></div>
+      <div class="chip"><div class="ico" aria-hidden="true">📸</div><div><b>Photo Guidance</b><br><span class="muted">Respectful distances</span></div></div>
+      <div class="chip"><div class="ico" aria-hidden="true">🛡</div><div><b>Ethical & Safe</b><br><span class="muted">International standards</span></div></div>
+    </div>
+  </section>
+
+  <!-- ===== SAFARI OPTIONS ===== -->
+  <section class="section" id="packages" aria-labelledby="packages-title">
+    <div class="wrap">
+      <h2 class="title" id="packages-title">Safari Options</h2>
+      <p class="sub">Choose the style that fits your journey. Each safari is private, ethical, and fully arranged by us.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1595981267035-df03e3a74b83?auto=format&fit=crop&w=1400&q=80')" role="img" aria-label="Private Jeep Safari"></div>
+          <div class="body">
+            <h3>Private Jeep Safari</h3>
+            <p>Flexible routes and exclusive entry with your own naturalist. Perfect for families and first‑time explorers.</p>
+            <a class="btn btn--royal cta" href="/enquiry">Plan this Safari →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1542219550-341c68572bdb?auto=format&fit=crop&w=1400&q=80')" role="img" aria-label="Birding Safari"></div>
+          <div class="body">
+            <h3>Birding Safari</h3>
+            <p>Wetlands and forest edges with a bird expert, spotting raptors and rarities at a gentle pace.</p>
+            <a class="btn btn--royal cta" href="/enquiry">Plan this Safari →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1600633855256-5d4220cf4e64?auto=format&fit=crop&w=1400&q=80')" role="img" aria-label="Photography Safari"></div>
+          <div class="body">
+            <h3>Photography Safari</h3>
+            <p>Guided frames and dedicated setups designed for serious photographers—light and behaviour focused.</p>
+            <a class="btn btn--royal cta" href="/enquiry">Plan this Safari →</a>
+          </div>
+        </article>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAN YOUR DRIVE ===== -->
+  <section class="section" aria-labelledby="plan-title" style="background:#fff">
+    <div class="wrap">
+      <h2 class="title" id="plan-title">Plan Your Drive</h2>
+      <p class="sub">Best seasons, permit windows, and practical notes — we manage the details.</p>
+      <div class="cols">
+        <div class="p">
+          <h3 style="margin:0 0 8px;color:var(--maroon-900)">Best Time to Visit</h3>
+          <p style="color:#4b5563">October–June. Peak sightings typically in <b>Dec–Apr</b> with cooler mornings and long golden hours. Monsoon closure may apply to core zones.</p>
+          <div style="margin-top:10px"><span class="pill">Golden hour drives</span><span class="pill">Cooler winter mornings</span><span class="pill">Summer waterholes</span></div>
+        </div>
+        <div class="p">
+          <h3 style="margin:0 0 8px;color:var(--maroon-900)">Permits & Logistics</h3>
+          <p style="color:#4b5563">We handle <b>100% of permits</b>, vehicles, and guide coordination. Limited entries per slot — earlier confirmations ensure preferred timings.</p>
+          <div style="margin-top:10px"><span class="pill">AM & PM slots</span><span class="pill">Private vehicles only</span><span class="pill">Door‑to‑door transfers</span></div>
+        </div>
+        <div class="p">
+          <h3 style="margin:0 0 8px;color:var(--maroon-900)">Ethics & Safety</h3>
+          <p style="color:#4b5563">Zero baiting. Zero crowding. We maintain respectful distances and follow park rules to protect wildlife and guest safety.</p>
+          <div style="margin-top:10px"><span class="pill">No flash / no calls</span><span class="pill">Trained naturalists</span><span class="pill">Child safety briefings</span></div>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== ADD‑ONS ===== -->
+  <section class="section" aria-labelledby="addons-title">
+    <div class="wrap">
+      <h2 class="title" id="addons-title">Elevate Your Safari</h2>
+      <p class="sub">Cultural and wellness experiences that pair perfectly with your drives.</p>
+      <div class="cols">
+        <div class="p" style="display:flex;gap:12px;align-items:center"><div class="ico" aria-hidden="true" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(145deg,var(--maroon),var(--maroon-700));color:#fff;display:grid;place-items:center;font-weight:900">🎵</div><div>Siddi Dhammal performance</div></div>
+        <div class="p" style="display:flex;gap:12px;align-items:center"><div class="ico" aria-hidden="true" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(145deg,var(--maroon),var(--maroon-700));color:#fff;display:grid;place-items:center;font-weight:900">🍲</div><div>Kathiyawadi dining & workshop</div></div>
+        <div class="p" style="display:flex;gap:12px;align-items:center"><div class="ico" aria-hidden="true" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(145deg,var(--maroon),var(--maroon-700));color:#fff;display:grid;place-items:center;font-weight:900">🧘</div><div>Sunrise yoga & wellness</div></div>
+        <div class="p" style="display:flex;gap:12px;align-items:center"><div class="ico" aria-hidden="true" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(145deg,var(--maroon),var(--maroon-700));color:#fff;display:grid;place-items:center;font-weight:900">🛕</div><div>Somnath & Dwarka day trips</div></div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" aria-labelledby="faq-title" style="background:#fff">
+    <div class="wrap faq">
+      <h2 class="title" id="faq-title">Safari FAQs</h2>
+      <div class="q"><h4>How many drives should I plan?</h4><p>We recommend a minimum of <b>3–4 drives</b> to experience different zones and animal behaviours across times of day.</p></div>
+      <div class="q"><h4>Are children allowed?</h4><p>Yes. We brief families on safety and behaviour, and can suggest gentler routes for younger travellers.</p></div>
+      <div class="q"><h4>What vehicles do you use?</h4><p>Government‑approved open jeeps with a trained driver and a naturalist. Private vehicles only—no sharing with other groups.</p></div>
+      <div class="q"><h4>What about ethical photography?</h4><p>No baiting, calling, or crowding. We keep respectful distances and follow park rules. Flash is not permitted.</p></div>
+      <div class="q"><h4>Do you arrange lodging and transfers?</h4><p>Yes. We run end‑to‑end itineraries with our partner hotels and door‑to‑door logistics.</p></div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== INVITATION ===== -->
+  <section class="section" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="invite">
+        <div class="head">
+          <div class="crest" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 7 5 5 4-8 4 8 5-5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+          <div>
+            <h3 id="cta-title">Your Royal Invitation</h3>
+            <div class="subt">Share your dates & preferences — we’ll reply with a tailor‑made plan.</div>
+          </div>
+        </div>
+        <div class="foot">
+          <a class="btn btn--royal" href="/enquiry">Accept Invitation</a>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer aria-labelledby="about-title">
+    <div class="wrap footer-grid">
+      <div>
+        <h4 id="about-title">The Gir Travel Company</h4>
+        <address>
+          Near Sinh Sadan, Gir National Park,<br/> Sasan Gir, Junagadh, Gujarat 362135
+        </address>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p>
+          <a href="/safaris" aria-current="page">Safaris</a> • <a href="/journeys">Journeys</a> •
+          <a href="/experiences">Experiences</a> • <a href="/gallery">Gallery</a>
+        </p>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <p><a href="/policies">Booking & Cancellation • Child • Ethics</a></p>
+      </div>
+      <div id="contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:info@thegir.in">info@thegir.in</a><br/>Phone: <a href="tel:+917624092647">+91 76240 92647</a></p>
+      </div>
+    </div>
+    <div class="wrap copyright">© <span id="year"></span> The Gir Travel Company. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Sticky header
+    const nav=document.getElementById('nav');
+    const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>10);
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // Mobile menu
+    const body=document.body;
+    const burger=document.getElementById('hamburger');
+    const panel=document.getElementById('mobPanel');
+    const closeBtn=document.getElementById('closeMenu');
+    function openMenu(){ body.classList.add('nav-open'); burger.setAttribute('aria-expanded','true'); }
+    function closeMenu(){ body.classList.remove('nav-open'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener('click',openMenu);
+    closeBtn.addEventListener('click',closeMenu);
+    panel.querySelectorAll('a').forEach(a=> a.addEventListener('click',closeMenu));
+
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

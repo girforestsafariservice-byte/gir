@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | The Gir Travel Company — Call • WhatsApp • Email</title>
+  <meta name="description" content="Contact The Gir Travel Company — call, WhatsApp, or email our concierge. Licensed & GST-compliant. Address near Sinh Sadan, Sasan Gir, Junagadh, Gujarat." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ======= Tokens (final design) ======= */
+    :root{
+      --maroon:#6E0C2E; --maroon-700:#4C081F; --maroon-900:#2A0512;
+      --gold:#D4AF37; --gold-700:#B48E1A; --ivory:#FAF7F2; --ink:#121212; --muted:#6B7280;
+      --ring:0 0 0 3px rgba(212,175,55,.25);
+      --shadow:0 24px 60px rgba(0,0,0,.18);
+      --nav-h:72px; --safe-top:env(safe-area-inset-top,0px);
+      --max:1200px; --radius:22px;
+    }
+    @media (min-width:1024px){ :root{ --nav-h:92px; } }
+
+    /* ======= Base ======= */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:auto;padding:0 18px}
+    .section{padding:88px 0}
+    .title{font-family:"Cormorant Garamond",serif;color:var(--maroon-900);font-size:clamp(30px,6vw,46px);margin:0 0 10px;text-align:center;text-wrap:balance}
+    .sub{color:var(--muted);text-align:center;margin:0 0 30px}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);width:260px;margin:44px auto}
+
+    /* ======= Buttons ======= */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:999px;border:1px solid transparent;padding:1rem 1.35rem;font-weight:800;line-height:1;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;min-height:48px}
+    .btn:focus-visible{outline:none;box-shadow:var(--ring)}
+    .btn--royal{background:linear-gradient(135deg,var(--gold),#ffe7a4);color:#2B1A07;box-shadow:0 14px 34px rgba(212,175,55,.45), inset 0 -3px 0 rgba(0,0,0,.18)}
+    .btn--royal:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(212,175,55,.6), inset 0 -3px 0 rgba(0,0,0,.22)}
+    .btn--ghost{background:#fff;border:1px solid #e5e7eb;color:#111}
+
+    /* ======= Header (finalized) ======= */
+    .nav{position:fixed;left:0;right:0;top:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;background:rgba(42,5,18,.55);backdrop-filter:saturate(140%) blur(6px);transition:background .3s, box-shadow .3s}
+    .nav.scrolled{background:rgba(42,5,18,.95);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+    .nav .inner{max-width:var(--max);margin:auto;padding:0 18px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand img{height:36px}
+    @media(min-width:1024px){ .brand img{height:44px} }
+    .right{display:flex;align-items:center;gap:18px;margin-left:auto}
+    .menu{display:none;gap:22px;align-items:center}
+    .menu a{color:#fff;font-weight:600;position:relative;padding:8px 0}
+    .menu a:after{content:"";position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .menu a:hover:after,.menu a[aria-current="page"]:after{transform:scaleX(1)}
+    .actions{display:none}
+    .actions .cta{padding:.65rem 1rem;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;font-weight:800}
+    .hamburger{display:flex;width:44px;height:44px;border:1px solid rgba(255,255,255,.45);border-radius:12px;background:rgba(46,5,16,.85);color:#fff;align-items:center;justify-content:center}
+    .hamburger svg{width:22px;height:22px}
+    @media(min-width:1024px){ .menu{display:flex} .actions{display:block} .hamburger{display:none} }
+
+    /* Mobile panel */
+    body.nav-open{overflow:hidden}
+    .mobile-panel{position:fixed;inset:0;z-index:9999;background:#6e0c2e!important;transform:translateX(-100%);transition:transform .3s ease;padding:60px 24px;display:flex;flex-direction:column}
+    body.nav-open .mobile-panel{transform:translateX(0)}
+    .mobile-panel .close-menu{position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:10px;width:40px;height:40px;display:grid;place-items:center;font-size:22px;cursor:pointer}
+    .mobile-panel a{display:block;color:#fff;font-size:1.15rem;font-weight:600;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+    .mobile-panel .cta{margin-top:30px;text-align:center;border:0;border-radius:999px;padding:14px;font-weight:800;background:#fff;color:#2A0E12;font-size:1.05rem}
+
+    /* ======= Hero (compact) ======= */
+    header.hero{position:relative;padding-top:calc(var(--nav-h) + var(--safe-top));background:radial-gradient(1200px 600px at 10% -10%, rgba(212,175,55,.22), transparent 60%), linear-gradient(180deg, rgba(42,5,18,.92), rgba(42,5,18,.82));color:#fff}
+    .hero-wrap{max-width:var(--max);margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding:24px 18px}
+    .hero-copy{padding:4px}
+    .kicker{letter-spacing:.18em;text-transform:uppercase;color:#f3ead3}
+    .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,6.4vw,64px);line-height:1.08;margin:.35rem 0}
+    .hero-lead{font-size:clamp(15px,3.6vw,19px);color:#f7f2e6;opacity:.96;max-width:56ch}
+    .hero-cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+    .hero-cta .btn{flex:1 1 220px}
+    .hero-media{border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.22)}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+    @media (max-width:900px){ .hero-wrap{grid-template-columns:1fr} .hero-media{order:-1} }
+
+    /* ======= Action cards ======= */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .card{background:#fff;border:1px solid rgba(212,175,55,.22);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+    .card h3{margin:0 0 6px;color:var(--maroon-900);font-size:1.05rem}
+    .meta{color:#4b5563}
+    .card .act{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+
+    /* ======= Address + map ======= */
+    .mapwrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+    .panel{background:#fff;border:1px solid rgba(212,175,55,.22);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+    .panel .pad{padding:16px}
+    .mapph{aspect-ratio:16/10;background:#ddd}
+    @media (max-width:900px){ .mapwrap{grid-template-columns:1fr} }
+
+    /* ======= Contact form ======= */
+    .formwrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:900px){ .formwrap{grid-template-columns:1fr} }
+    .form{background:#fff;border:1px solid rgba(212,175,55,.22);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} }
+    .field{position:relative}
+    .field input,.field select,.field textarea{width:100%;font:inherit;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 12px 12px;transition:border .2s, box-shadow .2s}
+    .field textarea{min-height:120px;resize:vertical}
+    .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#d4af37;box-shadow:var(--ring)}
+    .label{position:absolute;left:12px;top:10px;color:#6b7280;background:#fff;padding:0 6px;transition:transform .15s ease, color .15s ease, top .15s ease}
+    .field input:focus + .label,
+    .field input:not(:placeholder-shown) + .label,
+    .field select:focus + .label,
+    .field textarea:focus + .label,
+    .field textarea:not(:placeholder-shown) + .label{transform:translateY(-12px) scale(.92);top:-4px;color:#7a5b12}
+    .error{font-size:.85rem;color:#991b1b;margin-top:6px;display:none}
+    .invalid input,.invalid select,.invalid textarea{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.12)}
+    .checks{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:999px;padding:10px 12px;background:#fff;cursor:pointer}
+    .pill input{accent-color:#d4af37}
+    .actions-form{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+    .actions-form .btn{flex:1 1 220px}
+
+    /* ======= Footer ======= */
+    footer{background:var(--maroon-900);color:#e8e8e8;padding:40px 0;margin-top:24px}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    footer h4{margin:0 0 10px;color:#D4AF37}
+    .copyright{border-top:1px solid #4b1230;margin-top:18px;padding-top:12px;text-align:center;color:#cfcfcf}
+
+    /* ======= Mobile tweaks ======= */
+    @media (max-width:900px){ .section{padding:72px 0} }
+    @media (max-width:640px){ .wrap{padding:0 14px} .section{padding:56px 0} .title{font-size:clamp(28px,8vw,34px)} .btn{min-height:52px} }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="inner">
+      <a class="brand" href="/" aria-label="The Gir Travel Company home">
+        <img src="/assets/logo-white.svg" alt="The Gir Travel Company logo" width="144" height="36" />
+      </a>
+      <div class="right">
+        <div class="menu" role="menubar" aria-label="Main menu">
+          <a role="menuitem" href="index.html">Home</a>
+          <a role="menuitem" href="safaris.html">Safaris</a>
+          <a role="menuitem" href="journeys.html">Journeys</a>
+          <a role="menuitem" href="experiences.html">Experiences</a>
+          <a role="menuitem" href="gallery.html">Gallery</a>
+          <a role="menuitem" href="about.html">About</a>
+          <a role="menuitem" href="policies.html">Policies</a>
+          <a role="menuitem" href="contact.html" aria-current="page">Contact</a>
+        </div>
+        <div class="actions">
+          <a class="cta" href="enquiry.html">Plan My Journey</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobPanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-panel" id="mobPanel" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu" title="Close">×</button>
+    <a href="index.html">Home</a>
+    <a href="safaris.html">Safaris</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html" >About</a>
+    <a href="policies.html">Policies</a>
+    <a href="contact.html"aria-current="page">Contact</a>
+    <a class="cta" href ="enquiry.html">Plan My Journey</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" aria-label="Contact hero">
+    <div class="hero-wrap">
+      <div class="hero-copy">
+        <p class="kicker">Concierge • Licensed • GST-compliant</p>
+        <h1 class="hero-title">Contact The Gir Travel Company</h1>
+        <p class="hero-lead">Call, WhatsApp, or email us. We’ll help you weave Diu, Gir, Junagadh, Velavadar, and Kutch into one seamless journey.</p>
+        <div class="hero-cta">
+          <a class="btn btn--royal" href="tel:+917624092647" aria-label="Call The Gir Travel Company">Call +91 76240 92647</a>
+          <a class="btn btn--ghost" href="https://wa.me/917624092647?text=Hello%20The%20Gir%20Travel%20Company%2C%20I%27d%20like%20to%20plan%20a%20journey." target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+      <figure class="hero-media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1542131593-3914e7f52a5d?auto=format&fit=crop&w=2000&q=80" alt="Forest road at dawn in Gir" loading="eager" fetchpriority="high" decoding="async" />
+      </figure>
+    </div>
+  </header>
+
+  <!-- ===== QUICK CARDS ===== -->
+  <section class="section" aria-labelledby="contact-cards">
+    <div class="wrap">
+      <h2 class="title" id="contact-cards">Talk to Us</h2>
+      <p class="sub">Fastest way to reach the concierge team.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Phone</h3>
+          <div class="meta">+91 76240 92647</div>
+          <div class="act"><a class="btn btn--royal" href="tel:+917624092647">Call Now</a></div>
+        </div>
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <div class="meta">Quick replies during business hours</div>
+          <div class="act"><a class="btn btn--ghost" href="https://wa.me/917624092647?text=Hello%20The%20Gir%20Travel%20Company%2C%20I%27d%20like%20to%20plan%20a%20journey." target="_blank" rel="noopener">Open Chat</a></div>
+        </div>
+        <div class="card">
+          <h3>Email</h3>
+          <div class="meta"><a href="mailto:info@thegir.in">info@thegir.in</a></div>
+          <div class="act"><a class="btn btn--ghost" href="mailto:info@thegir.in">Write to Us</a></div>
+        </div>
+        <div class="card">
+          <h3>Hours</h3>
+          <div class="meta">Mon–Sat: 10:00–18:00 IST<br><small>On-trip guests: 24×7 emergency support</small></div>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== ADDRESS & MAP ===== -->
+  <section class="section" aria-labelledby="address-title" style="background:#fff">
+    <div class="wrap">
+      <h2 class="title" id="address-title">Address & Directions</h2>
+      <p class="sub">Near Sinh Sadan, Gir National Park, Sasan Gir, Junagadh, Gujarat 362135</p>
+      <div class="mapwrap">
+        <article class="panel">
+          <div class="pad">
+            <h3 style="margin:0 0 8px;color:var(--maroon-900)">Getting Here</h3>
+            <ul class="meta" style="margin:0 0 10px 18px">
+              <li>Nearest airport: Diu (DIU) — ~2 hrs drive</li>
+              <li>Nearest rail: Junagadh Jn — ~1.5 hrs drive</li>
+              <li>Private transfers arranged door-to-door</li>
+            </ul>
+            <address class="meta">
+              The Gir Travel Company<br/>
+              Near Sinh Sadan, Gir National Park,<br/>
+              Sasan Gir, Junagadh, Gujarat 362135
+            </address>
+          </div>
+        </article>
+        <aside class="panel">
+          <div class="mapph" id="mapPh" aria-label="Map placeholder"></div>
+          <!-- Lazy-load the actual map on interaction -->
+        </aside>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT FORM (Formspree) ===== -->
+  <section class="section" aria-labelledby="form-title">
+    <div class="wrap">
+      <h2 class="title" id="form-title">Write to Us</h2>
+      <p class="sub">Share a few details and we’ll reply within 24 hours.</p>
+
+      <div class="formwrap">
+        <form class="form" id="contactForm" action="https://formspree.io/f/ABCDefgh" method="POST" novalidate>
+          <div class="grid">
+            <div class="field">
+              <input id="name" name="name" required placeholder=" " autocomplete="name"/>
+              <span class="label">Full name *</span>
+              <div class="error" id="err-name">Please enter your name.</div>
+            </div>
+            <div class="field">
+              <input id="email" type="email" name="_replyto" required placeholder=" " autocomplete="email"/>
+              <span class="label">Email *</span>
+              <div class="error" id="err-email">Please enter a valid email.</div>
+            </div>
+            <div class="field">
+              <input id="phone" name="phone" required placeholder=" " inputmode="tel" pattern="^[+0-9()\\-\\s]{7,}$"/>
+              <span class="label">Phone (with country code) *</span>
+              <div class="error" id="err-phone">Please include your country code.</div>
+            </div>
+            <div class="field">
+              <select id="topic" name="topic" required>
+                <option value="" selected disabled>Choose a topic</option>
+                <option>Enquiry</option>
+                <option>Support (current booking)</option>
+                <option>Partnership</option>
+                <option>Media</option>
+              </select>
+              <span class="label">Topic *</span>
+              <div class="error" id="err-topic">Please select a topic.</div>
+            </div>
+
+            <div class="field">
+              <input id="tripmonth" name="trip_month" placeholder=" " />
+              <span class="label">Trip month (optional)</span>
+            </div>
+            <div class="field">
+              <input id="travellers" name="travellers" type="number" min="1" placeholder=" " />
+              <span class="label">Travellers (optional)</span>
+            </div>
+          </div>
+
+          <div class="checks" aria-label="Destination interests">
+            <label class="pill"><input type="checkbox" name="destinations" value="Diu"> Diu</label>
+            <label class="pill"><input type="checkbox" name="destinations" value="Gir"> Gir</label>
+            <label class="pill"><input type="checkbox" name="destinations" value="Junagadh"> Junagadh</label>
+            <label class="pill"><input type="checkbox" name="destinations" value="Velavadar"> Velavadar</label>
+            <label class="pill"><input type="checkbox" name="destinations" value="Kutch"> Kutch</label>
+          </div>
+
+          <div class="field" style="margin-top:10px">
+            <textarea id="message" name="message" required placeholder=" "></textarea>
+            <span class="label">Message *</span>
+            <div class="error" id="err-message">Please enter a message.</div>
+          </div>
+
+          <div style="display:flex;gap:10px;align-items:center;margin:8px 0 0">
+            <input type="checkbox" id="consent" name="consent" value="yes" required />
+            <label for="consent">I consent to The Gir Travel Company contacting me about this request.</label>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="website" autocomplete="off" style="display:none" aria-hidden="true" tabindex="-1">
+          <!-- Helpful fields -->
+          <input type="hidden" name="_subject" value="New Contact — The Gir Travel Company">
+          <input type="hidden" name="submitted_at" id="submittedAt" value="">
+
+          <div class="actions-form">
+            <button class="btn btn--royal" type="submit">Send Message</button>
+            <a class="btn btn--ghost" href="mailto:info@thegir.in">Email instead</a>
+          </div>
+        </form>
+
+        <!-- Info card -->
+        <aside class="panel">
+          <div class="pad">
+            <h3 style="margin:0 0 8px;color:var(--maroon-900)">Need a quicker response?</h3>
+            <p class="meta">WhatsApp us during business hours for faster coordination, or call for urgent matters.</p>
+            <p class="meta"><b>Phone:</b> <a href="tel:+917624092647">+91 76240 92647</a><br>
+            <b>WhatsApp:</b> <a href="https://wa.me/917624092647" target="_blank" rel="noopener">wa.me/917624092647</a></p>
+            <p class="meta"><b>Email:</b> <a href="mailto:info@thegir.in">info@thegir.in</a></p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section" aria-labelledby="cta-title" style="background:#fff">
+    <div class="wrap">
+      <div class="panel">
+        <div class="pad" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+          <div>
+            <h3 id="cta-title" style="margin:0 0 6px;color:var(--maroon-900);font-family:'Cormorant Garamond',serif;font-size:28px">Prefer a curated plan?</h3>
+            <p class="meta" style="margin:0">Use our Royal Invitation form — permits, transfers, hotels, all arranged.</p>
+          </div>
+          <a class="btn btn--royal" href="/enquiry">Accept Royal Invitation</a>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer aria-labelledby="about-title-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4 id="about-title-footer">The Gir Travel Company</h4>
+        <address>
+          Near Sinh Sadan, Gir National Park,<br/> Sasan Gir, Junagadh, Gujarat 362135
+        </address>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p>
+          <a href="/safaris">Safaris</a> • <a href="/journeys">Journeys</a> •
+          <a href="/experiences">Experiences</a> • <a href="/gallery">Gallery</a> • <a href="/about">About</a> • <a href="/policies">Policies</a> • <a href="/contact" aria-current="page">Contact</a>
+        </p>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <p><a href="/policies">Booking & Cancellation • Child • Ethics</a></p>
+      </div>
+      <div id="contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:info@thegir.in">info@thegir.in</a><br/>Phone: <a href="tel:+917624092647">+91 76240 92647</a></p>
+      </div>
+    </div>
+    <div class="wrap copyright">© <span id="year"></span> The Gir Travel Company. All rights reserved.</div>
+  </footer>
+
+  <!-- ===== Schema (Organization + ContactPoint) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"The Gir Travel Company",
+    "url":"https://thegir.in",
+    "logo":"https://thegir.in/assets/logo-white.svg",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Near Sinh Sadan, Gir National Park, Sasan Gir",
+      "addressLocality":"Junagadh",
+      "addressRegion":"Gujarat",
+      "postalCode":"362135",
+      "addressCountry":"IN"
+    },
+    "contactPoint":[
+      {"@type":"ContactPoint","telephone":"+91-76240-92647","contactType":"customer service","areaServed":"IN"},
+      {"@type":"ContactPoint","contactType":"WhatsApp","telephone":"+91-76240-92647","url":"https://wa.me/917624092647"}
+    ]
+  }
+  </script>
+
+  <script>
+    // Sticky header
+    const nav=document.getElementById('nav');
+    const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>10);
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // Mobile menu: open/close + focus trap + ESC
+    const body=document.body;
+    const burger=document.getElementById('hamburger');
+    const panel=document.getElementById('mobPanel');
+    const closeBtn=document.getElementById('closeMenu');
+    let lastFocus=null;
+    const getFocusable=()=>panel.querySelectorAll('a, button');
+
+    function openMenu(){
+      lastFocus=document.activeElement;
+      body.classList.add('nav-open');
+      burger.setAttribute('aria-expanded','true');
+      panel.setAttribute('aria-hidden','false');
+      const f=getFocusable(); if(f.length) f[0].focus();
+      document.addEventListener('keydown',onKeydown);
+    }
+    function closeMenu(){
+      body.classList.remove('nav-open');
+      burger.setAttribute('aria-expanded','false');
+      panel.setAttribute('aria-hidden','true');
+      document.removeEventListener('keydown',onKeydown);
+      if(lastFocus) lastFocus.focus();
+    }
+    function onKeydown(e){
+      if(e.key==='Escape'){ e.preventDefault(); closeMenu(); }
+      if(e.key==='Tab'){
+        const f=Array.from(getFocusable()); if(!f.length) return;
+        const first=f[0], last=f[f.length-1];
+        if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      }
+    }
+    burger.addEventListener('click',openMenu);
+    if(closeBtn) closeBtn.addEventListener('click',closeMenu);
+    panel.querySelectorAll('a').forEach(a=> a.addEventListener('click',closeMenu));
+
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Lazy map: load iframe on first interaction/scroll into view
+    const mapPh=document.getElementById('mapPh');
+    let mapLoaded=false;
+    function loadMap(){
+      if(mapLoaded) return; mapLoaded=true;
+      const iframe=document.createElement('iframe');
+      iframe.title='Google Map';
+      iframe.loading='lazy';
+      iframe.referrerPolicy='no-referrer-when-downgrade';
+      iframe.style.width='100%'; iframe.style.height='100%'; iframe.style.border='0';
+      iframe.src='https://www.google.com/maps?q=Sinh%20Sadan%20Sasan%20Gir&output=embed';
+      mapPh.replaceWith(iframe);
+    }
+    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting) loadMap(); }); },{threshold:.2});
+    io.observe(mapPh);
+    mapPh.addEventListener('click',loadMap,{once:true});
+
+    // ===== Formspree submit (AJAX) =====
+    const cf=document.getElementById('contactForm');
+    document.getElementById('submittedAt').value=new Date().toISOString();
+
+    function validateContact(){
+      let ok=true;
+      const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cf.email.value.trim());
+      const phoneOk=/^[+0-9()\-\\s]{7,}$/.test(cf.phone.value.trim());
+      const mark=(id,cond)=>{
+        const field=document.getElementById(id)?.closest('.field');
+        const err=document.getElementById('err-'+id);
+        if(!field) return;
+        if(cond){ field.classList.remove('invalid'); if(err) err.style.display='none';}
+        else { field.classList.add('invalid'); if(err) err.style.display='block'; ok=false; }
+      };
+      mark('name', cf.name.value.trim().length>1);
+      mark('email', emailOk);
+      mark('phone', phoneOk);
+      // topic & message
+      if(!cf.topic.value){ document.getElementById('err-topic').style.display='block'; ok=false; } else { document.getElementById('err-topic').style.display='none'; }
+      if(!cf.message.value.trim()){ document.getElementById('err-message').style.display='block'; ok=false; } else { document.getElementById('err-message').style.display='none'; }
+      if(!cf.consent.checked){ alert('Please provide consent to be contacted.'); ok=false; }
+      if(cf.website && cf.website.value) ok=false; // honeypot
+      return ok;
+    }
+
+    cf.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      if(!validateContact()) return;
+
+      const data=new FormData(cf);
+      try{
+        const res=await fetch(cf.action,{ method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if(res.ok){
+          alert('Thank you! We’ll get back to you within 24 hours.\nTip: You can also WhatsApp us now.');
+          cf.reset();
+        }else{
+          console.error(await res.json().catch(()=>({})));
+          alert('Sorry, something went wrong. Please email info@thegir.in or WhatsApp us.');
+        }
+      }catch(err){
+        console.error(err);
+        alert('Network error. Please email info@thegir.in or WhatsApp us.');
+      }
+    });
+  </script>
+</body>
+</html>
